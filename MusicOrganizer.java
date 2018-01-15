@@ -43,7 +43,7 @@ public class MusicOrganizer
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
         }
@@ -55,8 +55,31 @@ public class MusicOrganizer
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             files.remove(index);
         }
+    }
+    
+    /**
+     * Comprueba si un indice es valido en la coleccion. Si no lo es, imprime un mensaje por la terminal de texto.
+     * @param index El indice que se quiere comprobar.
+     */
+    public void checkIndex(int index) {
+        if(!(index >= 0 && index < files.size())) {
+            System.out.println(index + " no es un indice valido");
+        }
+    }
+    
+    /**
+     * Devuelve true si el indice es valido para la coleccion. False en otro caso.
+     * @param index El indice que se quiere comprobar.
+     * @return True si el indice es valido. False en caso contrario.
+     */
+    public boolean validIndex(int index) {
+        boolean validIndex = false;
+        if(index >= 0 && index < files.size()) {
+            validIndex =  true;
+        }
+        return validIndex;
     }
 }
